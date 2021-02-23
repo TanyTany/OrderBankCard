@@ -21,6 +21,8 @@ dependencies {
     // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
     testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
     testImplementation 'io.github.bonigarcia:webdrivermanager:4.3.1'
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver
+    testImplementation group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.141.59'
 
 }
 
@@ -28,4 +30,6 @@ test {
     useJUnitPlatform()
     // в тестах, вызывая `gradlew test -Dselenide.headless=true` будем передавать этот параметр в JVM (где его подтянет Selenide)
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
+//    systemProperty 'selenium.headless', System.getProperty('selenium.headless')
+
 }
