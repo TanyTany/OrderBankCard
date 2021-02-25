@@ -42,13 +42,15 @@ public class CallbackTest {
     void shouldTestV1() {
         driver.get("http://0.0.0.0:9999/");
 
-        List<WebElement> textFields = driver.findElements(By.className("input__control"));
-        textFields.get(0).sendKeys("Иванов Василий");
-        textFields.get(1).sendKeys("+79999999999");
+        driver.findElements(By.cssSelector("[data-test-id='name'] .input__control")).get(0).sendKeys("Иванов Василий");
+        driver.findElements(By.cssSelector("[data-test-id='phone'] .input__control")).get(0).sendKeys("+79999999999");
+
+//        textFields.get(0).sendKeys("Иванов Василий");
+//        textFields.get(1).sendKeys("+79999999999");
         driver.findElement(By.className("checkbox__box")).click();
         driver.findElement(By.tagName("button")).click();
 
-        String actualMessage = driver.findElement(By.tagName("p")).getText();
+        String actualMessage = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText();
         String expectedMessage = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
         assertEquals(expectedMessage, actualMessage.trim());
 
