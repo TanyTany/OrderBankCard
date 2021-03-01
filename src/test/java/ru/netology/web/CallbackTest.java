@@ -20,7 +20,7 @@ public class CallbackTest {
 
     @BeforeAll
     static void setUpAll() {
-        System.setProperty("webdriver.chrome.driver", "./driver/mac/chromedriver.exe");
+
         WebDriverManager.chromedriver().setup();
     }
 
@@ -42,11 +42,10 @@ public class CallbackTest {
     void shouldTestV1() {
         driver.get("http://0.0.0.0:9999/");
 
-        driver.findElements(By.cssSelector("[data-test-id='name'] .input__control")).get(0).sendKeys("Иванов Василий");
-        driver.findElements(By.cssSelector("[data-test-id='phone'] .input__control")).get(0).sendKeys("+79999999999");
+        driver.findElement(By.cssSelector("[data-test-id='name'] .input__control")).sendKeys("Иванов Василий");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] .input__control")).sendKeys("+79999999999");
 
-//        textFields.get(0).sendKeys("Иванов Василий");
-//        textFields.get(1).sendKeys("+79999999999");
+
         driver.findElement(By.className("checkbox__box")).click();
         driver.findElement(By.tagName("button")).click();
 
